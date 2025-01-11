@@ -26,7 +26,7 @@ app.MapGet("/", async () =>
     }
     var jsonMessage = JsonSerializer.Serialize(new { message });
     await File.WriteAllTextAsync(DATA_FILE, jsonMessage);
-    return "Сообщение сохранено в файл!";
+    return "Message saved!";
 });
 
 app.MapPost("/save", async (HttpContext context) =>
@@ -42,7 +42,7 @@ app.MapPost("/save", async (HttpContext context) =>
     var jsonMessage = JsonSerializer.Serialize(new { message });
     await File.WriteAllTextAsync(DATA_FILE, jsonMessage);
 
-    await context.Response.WriteAsJsonAsync(new { message = "Сообщение сохранено в файл" });
+    await context.Response.WriteAsJsonAsync(new { message = "Message saved" });
 });
 
 app.Run();
